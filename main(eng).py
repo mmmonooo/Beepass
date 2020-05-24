@@ -6,6 +6,15 @@ import os.path
 import time
 import random
 
+#asci cats arts
+cat1 = "     /\_____/\ \n    /  o   o  \ \n   ( ==  |  == )\n    )         (\n   (           )\n  ( (  )   (  ) )\n (__(__)___(__)__)"
+cat2 = "  /\_/\  (\n ( ^.^ ) _)\n   \|/  (\n ( | | )\n(__d b__)"
+cat3 = "|\__/,|\n|o o  |\n_______"
+cat3_1 = "|\__/,|\n|  o o|\n_______"
+cat4 = "                     /^--^\     /^--^\      /^--^\ \n                     \____/     \____/     _\____/ \n                    /      \   /      \   /      \ \n                   |        | |        | |        | \n                    \__  __/   \__  __/   \__  __/ \n|^|^|^|^|^|^|^|^|^|^|^|^\ \^|^|^|^/ /^|^|^|^|^\ \^|^|^|^|^|^|^|^|^|^|^|^|\n| | | | | | | | | | | | |\ \| | |/ /| | | | | | \ \ | | | | | | | | | | |\n########################/ /######\ \###########/ /#######################\n| | | | | | | | | | | | |\/ | | | |\/ | | | | | \/| | | | | | | | | | | |\n|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|"
+cat5 = "(^ ' - ' ^)/"
+cat6 = "(.) ' - '(.)'"
+
 #str to generate passwords
 symbols = 'A B C D E F G H I J K L M N O P Q R S T U V W X Y Z a b c d e f g h i j k l m n o p q r s t u v w x y z 1 2 3 4 5 6 7 8 9 0 ! @ # $ % ^ & * ( ) _ - + = ! " № ; % : ? * { } [ ] /  < > ~'
 passsssssssssssword = []
@@ -15,6 +24,7 @@ while True:
     q = os.path.isfile('open.pem') #search public key
     if q == False: #public key is not found
         print('Welcome to Beepass.')
+        print(cat2)
         time.sleep(2)
         print('Beepass is a open-source password manager, created by MONO.')
         time.sleep(2)
@@ -27,11 +37,19 @@ while True:
         r.write(path + ':/')
         r.close()
 
-        time.sleep(1)
-        print('\nGenerating keys...')
+        for i in range(4): #loading cat
+            os.system("cls")
+            print(cat3)
+            time.sleep(0.5)
+            os.system("cls")
+            print(cat3_1)
+            time.sleep(0.5)
+
+        time.sleep(0.5)
+        os.system('cls')
+        print('Generating keys...')
 
         key = RSA.generate(a) #generating keys
-
         private_key = key.export_key() #generating private key
         file_out = open(path + ':/' + "private.pem", "wb")
         file_out.write(private_key)
@@ -62,10 +80,12 @@ while True:
         print('Done!')
 
         time.sleep(1)
-        print('\nOk, restart the Beepass.')
+        print('Ok, restart the Beepass.')
         break
     else: #open key is found
         print('Welcome to Beepass.')
+        print(cat1)
+        time.sleep(2)
 
         j = open('path.txt', 'r') #reading path.txt file
         w = j.read()
@@ -75,10 +95,21 @@ while True:
 
         lollolololo = os.path.isfile(w + 'private.pem') #reading private key
         if lollolololo == False:
-            print('Error! Private key is not found!') #private key not found
-            time.sleep(2)
+            os.system('cls')
+
+            print('\nError! Private key is not found!\n')
+            print(cat4)
+            time.sleep(5)
             break #exit
 
+        os.system("cls")
+        for i in range(4): #loading cat
+            os.system("cls")
+            print(cat3)
+            time.sleep(0.5)
+            os.system("cls")
+            print(cat3_1)
+            time.sleep(0.5)
 
         file_in = open('password.txt.bin', "rb") #decrypting passwords list
         file_out = open(str('password.txt.bin'[:-4]), "wb")
@@ -112,6 +143,7 @@ while True:
         os.remove('password.txt') #deleting not encrypted passwords list
 
         print('Done!')
+        print(cat2)
         time.sleep(2)
 
         os.system('cls')
@@ -121,7 +153,19 @@ while True:
         x = len(pressf)
         for i in range(len(pressf)):
             if pressf[i] == 'with_love,_mono': #creating accounts
-                print('----------------------------------------------------')
+                randomcat = random.randint(1, 2)
+                if randomcat == 1:
+                    print('----------------------------------------------------')
+                else:
+                    randomcatt = random.randint(1, 4)
+                    if randomcatt == 1:
+                        print('------------------' + cat5 + '----------------------------------')
+                    elif randomcatt == 2:
+                        print('-----------------------------------' + cat5 + '-----------------')
+                    elif randomcatt == 3:
+                        print('------------------' + cat6 + '----------------------------------')
+                    elif randomcatt == 4:
+                        print('---------------------------' + cat6 + '-------------------------')
             else:
                 print(pressf[i]) #print data
 
